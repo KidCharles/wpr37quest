@@ -38,8 +38,6 @@ const typeDef = `
         name: String!
         desc: String!
     }
-
-    
 `
 
 
@@ -47,6 +45,49 @@ const typeDef = `
 let personId = 6;
 let classId = 6;
 let raceId = 6;
+
+const Classes = [{
+		id: 0,
+		name: 'Wizard',
+		desc: 'Believes in explosions'
+	},
+	{
+		id: 1,
+		name: 'Fighter',
+		desc: 'pretty cool dude'
+	}
+]
+
+const People = [{
+		id: 0,
+		name: 'Megumin',
+		classId: 0,
+		raceId: 0
+	},
+	{
+		id: 1,
+		name: 'John',
+		classId: 1,
+		raceId: 1
+	}
+]
+
+const races = [{
+		id: 0,
+		name: 'human',
+		desc: 'Basic'
+	},
+
+	{
+		id: 1,
+		name: 'elf',
+		desc: 'Knife ears'
+	}
+]
+
+let personId = 2;
+let raceId = 2;
+let classId = 2;
 
 const resolvers = {
 	Query: {
