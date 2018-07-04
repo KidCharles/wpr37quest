@@ -1,5 +1,7 @@
 const { GraphQLServer } = require ('graphql-yoga')
 
+// typeDef is like routing
+
 const typeDef = `
     type Query {
         name: String!
@@ -13,6 +15,8 @@ const typeDef = `
         )
     }
 `
+
+//resolvers is like the controller file 
 
 const resolvers = {
     Query: {
