@@ -1,6 +1,4 @@
-const {
-	GraphQLServer
-} = require('graphql-yoga')
+const {GraphQLServer} = require('graphql-yoga')
 
 // typeDef is like routing
 
@@ -8,7 +6,7 @@ const {
 //Mutation is like the end points (app.put, app.delete, app.post)
 //Type person, class and race are like setting up a table in sql.
 
-const typeDef = `
+const typeDefs = `
     type Query {
         persons: [Person!]!
         
@@ -23,7 +21,7 @@ const typeDef = `
     type Person{
         id: ID!
         name: String!
-        classId: ID!
+        classId: ID
         raceId: ID
     }
 
@@ -42,9 +40,6 @@ const typeDef = `
 
 
 //resolvers is like the controller file or the C UD in CRUD
-let personId = 6;
-let classId = 6;
-let raceId = 6;
 
 const Classes = [{
 		id: 0,
@@ -91,18 +86,17 @@ let classId = 2;
 
 const resolvers = {
 	Query: {
-
+        persons: ()=> People,
+        Race: ()=> races,
+        Class: ()=> Classes
     },
 	Mutations: {
 		addPerson: (root, arg) => {
 			const Person = {
                 id:personId++,
                 name: arg.name,
-                classId: ()=>{
-                    db.getClass(arg.class)
-                            
-                }
-			}
+            }
+            People.push(Person)
 		},
 		addClass: (root, arg) => {
             const Class = {
@@ -110,6 +104,7 @@ const resolvers = {
                 name: arg.name,
                 desc: arg.desc,
             }
+            Classes.push(Class)
 		},
 		addRace: (root, arg) => {
             const Race = {
@@ -117,6 +112,7 @@ const resolvers = {
                 name: arg.name,
                 desc: arg.desc
             }
+            Races.push(Race)
         },
         
 	}
