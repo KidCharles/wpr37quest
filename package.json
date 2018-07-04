@@ -1,0 +1,22 @@
+{
+  "name": "wpr37quest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KidCharles/wpr37quest.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KidCharles/wpr37quest/issues"
+  },
+  "homepage": "https://github.com/KidCharles/wpr37quest#readme",
+  "dependencies": {
+    "graphql-yoga": "^1.14.10"
+  }
+}
