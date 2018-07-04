@@ -38,11 +38,21 @@ const resolvers = {
     Query: {
 
     },
-    Mutations: {
-        functionOne: (root, arg)=>{
+	Mutations: {
+		addPerson: (root, arg) => {
+			const Person = {
+                id:ID,
+                name: arg.name,
+                classId: ()=>{
+                    db.getClass(arg.class)
+                            
+                }
+			}
+		},
+		addClass: (root, arg) => {
 
-        },
-        functionTwo: (root, arg)=>{
+		},
+		addRace: (root, arg) => {
 
         }
     }
