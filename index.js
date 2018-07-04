@@ -1,5 +1,5 @@
 const { GraphQLServer } = require ('graphql-yoga')
-
+//this is a git kraken test
 const typeDef = `
     type Query {
         persons: [Person!]!
