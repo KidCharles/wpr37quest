@@ -1,10 +1,16 @@
-const { GraphQLServer } = require ('graphql-yoga')
+const {
+	GraphQLServer
+} = require('graphql-yoga')
+
+// typeDef is like routing
+
+//Query is like the end point (app.get or the R in CRUD)
+//Mutation is like the end points (app.put, app.delete, app.post)
+//Type person, class and race are like setting up a table in sql.
 
 const typeDef = `
-    type Query {
-        name: String!
-        class: String!
-        
+        type Query {
+        persons: [Person!]!
     }
 
     type Mutation{
@@ -12,24 +18,51 @@ const typeDef = `
 
         )
     }
+
+    type Person{
+        id: ID!
+        name: String!
+        classId: ID!
+        raceId: ID
+    }
+
+    type Class{
+        id: ID!
+        name: String!
+        desc: String!
+    }
+
+    type Race{
+        id: ID!
+        name: String!
+        desc: String!
+    }
 `
 
+
+//resolvers is like the controller file or the C UD in CRUD
+
 const resolvers = {
-    Query: {
+	Query: {
 
-    },
-    Mutations: {
-        functionOne: (root, arg)=>{
+	},
+	Mutations: {
+		addPerson: (root, arg) => {
+			const Person = {
 
-        },
-        functionTwo: (root, arg)=>{
+			}
+		},
+		addClass: (root, arg) => {
 
-        }
-    }
+		},
+		addRace: (root, arg) => {
+
+		}
+	}
 }
 
 const server = new GraphQLServer({
-    typeDefs,
-    resolvers
+	typeDefs,
+	resolvers
 })
-server.start (()=> console.log(`sever is running on http://localhost:4000`))
+server.start(() => console.log(`sever is running on http://localhost:4000`))
