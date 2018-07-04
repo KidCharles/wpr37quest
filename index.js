@@ -89,14 +89,22 @@ let classId = 2;
 const resolvers = {
 	Query: {
 
-	},
+    },
 	Mutations: {
 		addPerson: (root, arg) => {
 			const Person = {
-
+                id:ID,
+                name: arg.name,
+                classId: ()=>{
+                    db.getClass(arg.class)
+                            
+                }
 			}
 		},
 		addClass: (root, arg) => {
+
+		},
+		addRace: (root, arg) => {
 
 		},
 		addRace: (root, arg) => {
