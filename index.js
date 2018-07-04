@@ -9,13 +9,14 @@ const {GraphQLServer} = require('graphql-yoga')
 const typeDefs = `
     type Query {
         persons: [Person!]!
-        
+        classes: [Class!]!
+        races: [Race!]!
     }
 
-    type Mutation{
-        functionOne(
-
-        )
+    type Mutations{
+        addPerson(name:String!, classId:ID!, raceId:ID!) :Person
+        addClass(name:String!, desc:String!) :Class
+        addRace(name:String!, desc:String!) :Race
     }
 
     type Person{
@@ -23,6 +24,8 @@ const typeDefs = `
         name: String!
         classId: ID
         raceId: ID
+        Class: Class
+        Race: Race
     }
 
     type Class{
@@ -87,14 +90,16 @@ const classId = 2;
 const resolvers = {
 	Query: {
         persons: ()=> People,
-        Race: ()=> races,
-        Class: ()=> Classes
+        races: ()=> races,
+        classes: ()=> Classes
     },
 	Mutations: {
 		addPerson: (root, arg) => {
 			const Person = {
                 id:personId++,
                 name: arg.name,
+                classId: arg.classId,
+                raceId: arg.raceId
             }
             People.push(Person)
 		},
@@ -115,7 +120,16 @@ const resolvers = {
             Races.push(Race)
         },
         
-	}
+    },
+    Person:{
+        Class(person){
+           return Classes.find((personClass) => personClass.id === person.classId)
+        },
+        Race(person){
+            return races.find((personRace)=> personRace.id === person.raceId)
+        }
+    },
+
 }
 
 const server = new GraphQLServer({
