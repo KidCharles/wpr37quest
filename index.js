@@ -2,8 +2,7 @@ const { GraphQLServer } = require ('graphql-yoga')
 
 const typeDef = `
     type Query {
-        name: String!
-        class: String!
+        persons: [Person!]!
         
     }
 
@@ -12,6 +11,13 @@ const typeDef = `
 
         )
     }
+
+    Person{
+        name: String!
+        class: String!
+    }
+
+    
 `
 
 const resolvers = {
