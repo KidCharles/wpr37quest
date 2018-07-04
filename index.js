@@ -9,8 +9,9 @@ const {
 //Type person, class and race are like setting up a table in sql.
 
 const typeDef = `
-        type Query {
+    type Query {
         persons: [Person!]!
+        
     }
 
     type Mutation{
@@ -37,6 +38,8 @@ const typeDef = `
         name: String!
         desc: String!
     }
+
+    
 `
 
 
