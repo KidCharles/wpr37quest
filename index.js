@@ -1,6 +1,4 @@
-const {
-	GraphQLServer
-} = require('graphql-yoga')
+const {GraphQLServer} = require('graphql-yoga')
 
 // typeDef is like routing
 
@@ -23,7 +21,7 @@ const typeDefs = `
     type Person{
         id: ID!
         name: String!
-        classId: ID!
+        classId: ID
         raceId: ID
     }
 
@@ -88,28 +86,35 @@ const classId = 2;
 
 const resolvers = {
 	Query: {
-
-	},
+        persons: ()=> People,
+        Race: ()=> races,
+        Class: ()=> Classes
+    },
 	Mutations: {
 		addPerson: (root, arg) => {
 			const Person = {
-				id: ID,
-				name: arg.name,
-				classId: () => {
-					db.getClass(arg.class)
-
-				}
-			}
+                id:personId++,
+                name: arg.name,
+            }
+            People.push(Person)
 		},
 		addClass: (root, arg) => {
-
+            const Class = {
+                id:classId++,
+                name: arg.name,
+                desc: arg.desc,
+            }
+            Classes.push(Class)
 		},
 		addRace: (root, arg) => {
-
-		},
-		addRace: (root, arg) => {
-
-		}
+            const Race = {
+                id: raceId++,
+                name: arg.name,
+                desc: arg.desc
+            }
+            Races.push(Race)
+        },
+        
 	}
 }
 
