@@ -12,10 +12,23 @@ const typeDef = `
         )
     }
 
-    Person{
+    type Person{
         id: ID!
         name: String!
-        class: String!
+        classId: ID!
+        raceId: ID
+    }
+
+    type Class{
+        id: ID!
+        name: String!
+        desc: String!
+    }
+
+    type Race{
+        id: ID!
+        name: String!
+        desc: String!
     }
 
     
