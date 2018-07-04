@@ -4,11 +4,11 @@ const {
 
 // typeDef is like routing
 
-//Query is like the end point (app.get or the R in CRUD)
-//Mutation is like the end points (app.put, app.delete, app.post)
-//Type person, class and race are like setting up a table in sql.
+// Query is like the end point (app.get or the R in CRUD)
+// Mutation is like the end points (app.put, app.delete, app.post)
+// Type person, class and race are like setting up a table in sql.
 
-const typeDef = `
+const typeDefs = `
     type Query {
         persons: [Person!]!
         
@@ -41,7 +41,7 @@ const typeDef = `
 `
 
 
-//resolvers is like the controller file or the C UD in CRUD
+// resolvers is like the controller file or the C UD in CRUD
 
 const Classes = [{
 		id: 0,
@@ -82,23 +82,23 @@ const races = [{
 	}
 ]
 
-let personId = 2;
-let raceId = 2;
-let classId = 2;
+const personId = 2;
+const raceId = 2;
+const classId = 2;
 
 const resolvers = {
 	Query: {
 
-    },
+	},
 	Mutations: {
 		addPerson: (root, arg) => {
 			const Person = {
-                id:ID,
-                name: arg.name,
-                classId: ()=>{
-                    db.getClass(arg.class)
-                            
-                }
+				id: ID,
+				name: arg.name,
+				classId: () => {
+					db.getClass(arg.class)
+
+				}
 			}
 		},
 		addClass: (root, arg) => {
