@@ -13,6 +13,7 @@ const typeDef = `
     }
 
     Person{
+        id: ID!
         name: String!
         class: String!
     }
