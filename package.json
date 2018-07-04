@@ -1,22 +1,35 @@
 {
-  "name": "wpr37quest",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/KidCharles/wpr37quest.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/KidCharles/wpr37quest/issues"
-  },
-  "homepage": "https://github.com/KidCharles/wpr37quest#readme",
-  "dependencies": {
-    "graphql-yoga": "^1.14.10"
-  }
+	"name": "wpr37quest",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/KidCharles/wpr37quest.git"
+	},
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/KidCharles/wpr37quest/issues"
+	},
+	"homepage": "https://github.com/KidCharles/wpr37quest#readme",
+	"dependencies": {
+		"graphql-yoga": "^1.14.10",
+		"react": "^16.4.1",
+		"react-dom": "^16.4.1"
+	},
+	"devDependencies": {
+		"babel-cli": "^6.26.0",
+		"babel-core": "^6.26.3",
+		"babel-eslint": "^8.2.5",
+		"eslint": "^5.0.1",
+		"eslint-config-airbnb": "^17.0.0",
+		"eslint-config-prettier": "^2.9.0",
+		"eslint-plugin-jsx-a11y": "^6.1.0",
+		"eslint-plugin-prettier": "^2.6.1",
+		"nodemon": "^1.17.5"
+	}
 }
