@@ -44,6 +44,9 @@ const typeDef = `
 
 
 //resolvers is like the controller file or the C UD in CRUD
+let personId = 6;
+let classId = 6;
+let raceId = 6;
 
 const resolvers = {
 	Query: {
@@ -52,7 +55,7 @@ const resolvers = {
 	Mutations: {
 		addPerson: (root, arg) => {
 			const Person = {
-                id:ID,
+                id:personId++,
                 name: arg.name,
                 classId: ()=>{
                     db.getClass(arg.class)
@@ -61,14 +64,20 @@ const resolvers = {
 			}
 		},
 		addClass: (root, arg) => {
-
+            const Class = {
+                id:classId++,
+                name: arg.name,
+                desc: arg.desc,
+            }
 		},
 		addRace: (root, arg) => {
-
-		},
-		addRace: (root, arg) => {
-
-		}
+            const Race = {
+                id: raceId++,
+                name: arg.name,
+                desc: arg.desc
+            }
+        },
+        
 	}
 }
 
