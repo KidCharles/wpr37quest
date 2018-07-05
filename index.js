@@ -1,4 +1,6 @@
-const {GraphQLServer} = require('graphql-yoga')
+const {
+	GraphQLServer
+} = require('graphql-yoga')
 
 // typeDef is like routing
 
@@ -45,90 +47,89 @@ const typeDefs = `
 // resolvers is like the controller file or the C UD in CRUD
 
 const Classes = [{
-		id: 0,
-		name: 'Wizard',
-		desc: 'Believes in explosions'
-	},
-	{
-		id: 1,
-		name: 'Fighter',
-		desc: 'pretty cool dude'
-	}
-]
+	id: 0,
+	name: 'Wizard',
+	desc: 'Believes in explosions'
+}, {
+	id: 1,
+	name: 'Fighter',
+	desc: 'pretty cool dude'
+}]
 
 const People = [{
-		id: 0,
-		name: 'Megumin',
-		classId: 0,
-		raceId: 0
-	},
-	{
-		id: 1,
-		name: 'John',
-		classId: 1,
-		raceId: 1
-	}
-]
+	id: 0,
+	name: 'Megumin',
+	classId: 0,
+	raceId: 0
+}, {
+	id: 1,
+	name: 'John',
+	classId: 1,
+	raceId: 1
+}]
 
-const races = [{
-		id: 0,
-		name: 'human',
-		desc: 'Basic'
-	},
+const Races = [{
+	id: 0,
+	name: 'human',
+	desc: 'Basic'
+}, {
+	id: 1,
+	name: 'elf',
+	desc: 'Knife ears'
+}]
 
-	{
-		id: 1,
-		name: 'elf',
-		desc: 'Knife ears'
-	}
-]
-
-const personId = 2;
-const raceId = 2;
-const classId = 2;
+let personId = 2;
+let raceId = 2;
+let classId = 2;
 
 const resolvers = {
 	Query: {
-        persons: ()=> People,
-        races: ()=> races,
-        classes: ()=> Classes
-    },
+		persons: () => People,
+		races: () => Races,
+		classes: () => Classes
+	},
 	Mutations: {
 		addPerson: (root, arg) => {
 			const Person = {
-                id:personId++,
-                name: arg.name,
-                classId: arg.classId,
-                raceId: arg.raceId
-            }
-            People.push(Person)
+				id: personId,
+				name: arg.name,
+				classId: arg.classId,
+				raceId: arg.raceId
+			}
+
+			personId += 1;
+			People.push(Person)
 		},
 		addClass: (root, arg) => {
-            const Class = {
-                id:classId++,
-                name: arg.name,
-                desc: arg.desc,
-            }
-            Classes.push(Class)
+			const Class = {
+				id: classId,
+				name: arg.name,
+				desc: arg.desc,
+			}
+
+			classId += 1;
+			Classes.push(Class)
 		},
 		addRace: (root, arg) => {
-            const Race = {
-                id: raceId++,
-                name: arg.name,
-                desc: arg.desc
-            }
-            Races.push(Race)
-        },
-        
-    },
-    Person:{
-        Class(person){
-           return Classes.find((personClass) => personClass.id === person.classId)
-        },
-        Race(person){
-            return races.find((personRace)=> personRace.id === person.raceId)
-        }
-    },
+			const Race = {
+				id: raceId,
+				name: arg.name,
+				desc: arg.desc
+			}
+
+			raceId += 1;
+			Races.push(Race)
+		},
+
+	},
+	Person: {
+		Class(person) {
+			return Classes.find((personClass) => personClass.id === person.classId)
+		},
+		Race(person) {
+			return Races.find((personRace) => personRace.id === person.raceId)
+		}
+	},
 
 }
 
