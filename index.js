@@ -1,6 +1,6 @@
-const {
+import {
 	GraphQLServer
-} = require('graphql-yoga')
+} from 'graphql-yoga'
 
 // typeDef is like routing
 
@@ -88,6 +88,7 @@ const resolvers = {
 		races: () => Races,
 		classes: () => Classes
 	},
+
 	Mutations: {
 		addPerson: (root, arg) => {
 			const Person = {
@@ -100,6 +101,7 @@ const resolvers = {
 			personId += 1;
 			People.push(Person)
 		},
+
 		addClass: (root, arg) => {
 			const Class = {
 				id: classId,
@@ -110,6 +112,7 @@ const resolvers = {
 			classId += 1;
 			Classes.push(Class)
 		},
+
 		addRace: (root, arg) => {
 			const Race = {
 				id: raceId,
@@ -122,6 +125,7 @@ const resolvers = {
 		},
 
 	},
+
 	Person: {
 		Class(person) {
 			return Classes.find((personClass) => personClass.id === person.classId)
@@ -137,4 +141,5 @@ const server = new GraphQLServer({
 	typeDefs,
 	resolvers
 })
+
 server.start(() => console.log(`sever is running on http://localhost:4000`))

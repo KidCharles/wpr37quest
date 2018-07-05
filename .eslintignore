@@ -1,3 +1,5 @@
 /node_modules
 /seeds
 /migrations
+/scripts
+/config
