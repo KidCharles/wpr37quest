@@ -2,9 +2,9 @@
 	"name": "wpr37quest",
 	"version": "1.0.0",
 	"description": "",
-	"main": "index.js",
+	"main": "./Server/index.js",
 	"scripts": {
-		"server": "babel-node --presets=env -- ./Index.js",
+		"server": "babel-node --presets=env -- Server/Index.js",
 		"start": "node scripts/start.js",
 		"dev": "concurrently \"yarn start\" \" nodemon \" ",
 		"build": "node scripts/build.js"
